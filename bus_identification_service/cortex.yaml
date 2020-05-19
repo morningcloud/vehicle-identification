@@ -11,7 +11,7 @@
       gvision_apikey: [TO-BE-ADDED]
       min_threshold: 0.5
       experiment_id: 92
-      training_run_id: 54
+      training_run_id: 55
   compute:
     cpu: 1
     gpu: 0
