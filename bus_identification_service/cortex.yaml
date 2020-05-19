@@ -1,0 +1,18 @@
+- name: busid
+  predictor:
+    type: python
+    path: busid_inference.py
+    config:
+      highlighter_endpoint_url: https://demo.highlighter.ai/graphql
+      aws_s3_presigned_url: https://demo.highlighter.ai/presign
+      highlighter_apitoken: [TO-BE-ADDED]
+      #model: s3://s3-ghawady-001/busid_model/busid_frozen_inference_graph.pb
+      #labelmap: s3://s3-ghawady-001/busid_model/label_map.pbtxt
+      gvision_apikey: [TO-BE-ADDED]
+      min_threshold: 0.5
+      experiment_id: 92
+      training_run_id: 54
+  compute:
+    cpu: 1
+    gpu: 0
+    mem: 2.5G
