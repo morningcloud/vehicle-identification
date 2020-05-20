@@ -19,6 +19,7 @@ import os
 import sys
 from collections import defaultdict
 from io import StringIO, BytesIO
+
 import tarfile
 
 
@@ -31,7 +32,7 @@ from googleapiclient.discovery import build
 import base64
 import re
 
-sys.path.append(os.path.abspath("../../highlighter_client_python"))
+sys.path.append(os.path.abspath("../../highlighter_client_python_latest"))
 from highlighter_client import graphql as gql
 from sgqlc.operation import Operation
 
@@ -43,20 +44,6 @@ LABELS_PATH = os.path.join(DOWNLOAD_DIR, "bus_label_map.pbtxt")
 
 class PythonPredictor:
   def __init__(self, config):
-    # highlighter API for model download
-    schema = gql.silverpond_schema
-    context = gql.HighlighterContext(
-        apitoken=config['highlighter_apitoken'],
-        endpoint_url=config['highlighter_endpoint_url'],
-        aws_s3_presigned_url=config['aws_s3_presigned_url'])
-
-    op = Operation(schema.Query)
-    # Get a specific experiment where the training run was under... 
-    # training_run_id will contain the model download link
-    field = op.experiment(id=config['experiment_id'])
-    field.training_runs.id()
-    field.training_runs.model_implementation_file_url()
-    result = context.endpoint(op)
 
     # minimum score confidence threshold for accepting predictions
     self.min_threshold = config['min_threshold']
@@ -65,25 +52,11 @@ class PythonPredictor:
     self.gvision_apikey = config["gvision_apikey"]
     self.vservice = build('vision', 'v1', developerKey=self.gvision_apikey, cache_discovery=False)
 
-    # download run files (i.e. frozen graph and label classes)
-    try:
-        file_url, = [
-            tr.model_implementation_file_url
-            for tr in result.experiment.training_runs
-            if tr.id == str(config['training_run_id'])
-        ]
-    except AttributeError:
-        raise RuntimeError(
-            f"Could not find training_run(id={config['training_run_id']}) "
-            f"in experiment(id={config['experiment_id']}")
-    #except Exception as e: print(e)
-
-    print(f"Found model file: {file_url}. Downloading...")
-    r = requests.get(file_url, allow_redirects=True)
-    open(DOWNLOAD_PATH, 'wb').write(r.content)
-    print("Extracting model.tar")
-    with tarfile.open(DOWNLOAD_PATH) as buf:
-        buf.extractall(path=DOWNLOAD_DIR)
+    # highlighter API for model download
+    gql.export_model_files(
+      experiment_id=config['experiment_id'],
+      training_run_id=config['training_run_id'],
+      output_directory=DOWNLOAD_DIR)
 
     # initiate graph to be used for inference
     self.detection_graph = tf.Graph()
@@ -261,7 +234,7 @@ class PythonPredictor:
 
             if readings:
               predictions['predictions'].append({'class':class_name,
-                                'score':scores[i],
+                                'score':str(scores[i]),
                                 'value':readings})
             else:
               print('nothing returned', readings)

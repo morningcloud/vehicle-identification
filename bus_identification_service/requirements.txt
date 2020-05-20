@@ -1,6 +1,9 @@
+--index-url https://${PYPI_USERNAME}:${PYPI_PASSWORD}@pypi.silverpond.com.au/simple
+
 requests
 tensorflow==1.15.2
 gast==0.2.2
 google-api-python-client
 Pillow
 sgqlc
+highlighter_client>=0.1.8
