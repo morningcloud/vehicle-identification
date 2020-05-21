@@ -5,13 +5,17 @@
     config:
       highlighter_endpoint_url: https://demo.highlighter.ai/graphql
       aws_s3_presigned_url: https://demo.highlighter.ai/presign
-      highlighter_apitoken: [TO-BE-ADDED]
       #model: s3://s3-ghawady-001/busid_model/busid_frozen_inference_graph.pb
       #labelmap: s3://s3-ghawady-001/busid_model/label_map.pbtxt
+      highlighter_apitoken: [TO-BE-ADDED]
       gvision_apikey: [TO-BE-ADDED]
       min_threshold: 0.5
       experiment_id: 92
       training_run_id: 55
+    env:
+      PYPI_USERNAME: [TO-BE-ADDED]
+      PYPI_PASSWORD: [TO-BE-ADDED]
+
   compute:
     cpu: 1
     gpu: 0

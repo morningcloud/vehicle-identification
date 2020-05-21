@@ -10,7 +10,6 @@
 #   http://$ENDPOINT/wps/production?debug=true
 
 from PIL import Image
-import boto3
 import numpy as np
 import re
 import requests
@@ -52,11 +51,20 @@ class PythonPredictor:
     self.gvision_apikey = config["gvision_apikey"]
     self.vservice = build('vision', 'v1', developerKey=self.gvision_apikey, cache_discovery=False)
 
+    context = gql.HighlighterContext(
+        apitoken=config['highlighter_apitoken'],
+        endpoint_url=config['highlighter_endpoint_url'],
+        aws_s3_presigned_url=config['aws_s3_presigned_url'])
+
     # highlighter API for model download
-    gql.export_model_files(
-      experiment_id=config['experiment_id'],
-      training_run_id=config['training_run_id'],
-      output_directory=DOWNLOAD_DIR)
+    with context:
+      model_file = gql.export_model_files(
+        experiment_id=config['experiment_id'],
+        training_run_id=config['training_run_id'],
+        output_directory=DOWNLOAD_DIR)
+
+    with tarfile.open(model_file) as buf:
+        buf.extractall(path=DOWNLOAD_DIR)
 
     # initiate graph to be used for inference
     self.detection_graph = tf.Graph()
