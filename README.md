@@ -35,3 +35,17 @@ The output of the Google Vision API is processed with regex depending on the cla
 2. Highlighter Web (To create Training Run for checkpoint upload)
 3. Highlighter Python Client (CLI interface to import model to HL)
 4. Highlighter Cortex Cluster (For model deployment for interence)
+
+## Model Training
+
+
+## Highlighter Web
+
+
+## Highlighter Python Client
+
+
+## Highlighter Cortex Cluster
+
+
+
