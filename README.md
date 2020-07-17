@@ -101,5 +101,22 @@ highlighter export_model_files --training-run-id=55
 
 ## Highlighter Cortex Cluster
 
+Cortex is used to deploy and serve the bus identification model implements the steps mentioned in the [process flow diagram]](#process-flow)
 
-
+Following is a summary of steps to do the detailed installation steps are found [here](https://gitlab.com/silverpond/infrastructure/highlighter-cortex-cluster/-/blob/busid/busid/ReadMe.md)
+1. Get latest source from [here](https://gitlab.com/silverpond/infrastructure/highlighter-cortex-cluster/-/tree/busid)
+2. Run Following
+```
+cd highlighter-cortex-cluster
+cortex deploy busid/cortex.yaml
+cortex logs busid
+cortex get busid
+```
+3. Once the deployment is complete, can invoke the inference model via http and passing an image URL as follows
+```
+curl http://localhost:8888 -X POST -H "Content-Type: application/json" -d '{"image_url":"https://imgur.com/6BvQqTa.jpg"}'
+```
+Expected Response
+```
+{"predictions": [{"class": "BusRun", "score": 0.9983952045440674, "value": "30"}, {"class": "PlateNo", "score": 0.9890475273132324, "value": "10V 4VX"}]}
+```
