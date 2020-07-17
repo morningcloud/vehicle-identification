@@ -37,7 +37,7 @@ The output of the Google Vision API is processed with regex depending on the cla
 4. [Highlighter Cortex Cluster](https://gitlab.com/silverpond/infrastructure/highlighter-cortex-cluster/-/tree/busid) (For model deployment for interence)
 
 ## Model Training
-
+We used colab for the object detection model training
 
 ## Highlighter Web
 Following steps required for a new project to upload images and annotations (The upload part can be done either via web or highlighter_client_python)
@@ -106,11 +106,11 @@ Cortex is used to deploy and serve the bus identification model implements the s
 Following is a summary of steps to do the detailed installation steps are found [here](https://gitlab.com/silverpond/infrastructure/highlighter-cortex-cluster/-/blob/busid/busid/ReadMe.md)
 1. Get latest source from [here](https://gitlab.com/silverpond/infrastructure/highlighter-cortex-cluster/-/tree/busid)
 2. Update following config in busid/cortex.yaml
-- highlighter_endpoint_url
-- aws_s3_presigned_url
-- highlighter_apitoken 
-- [gvision_apikey](https://cloud.google.com/vision/docs/setup)
-- training_run_id 
+    - highlighter_endpoint_url
+    - aws_s3_presigned_url
+    - highlighter_apitoken 
+    - [gvision_apikey](https://cloud.google.com/vision/docs/setup)
+    - training_run_id 
 
 
 3. Run Following
