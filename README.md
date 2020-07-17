@@ -33,14 +33,24 @@ The output of the Google Vision API is processed with regex depending on the cla
 ## Components involved
 1. Model Training (available in this repo)
 2. [Highlighter Web](https://highlighter.ai/dashboard) (To create Training Run for checkpoint upload)
-3. [Highlighter Python Client](https://gitlab.com/silverpond/products/highlighter/highlighter_client_python) (CLI interface to import model to HL)
+3. [Highlighter Client Python](https://gitlab.com/silverpond/products/highlighter/highlighter_client_python) (CLI interface to import model to HL)
 4. [Highlighter Cortex Cluster](https://gitlab.com/silverpond/infrastructure/highlighter-cortex-cluster/-/tree/busid) (For model deployment for interence)
 
 ## Model Training
 
 
 ## Highlighter Web
+Following steps required for a new project to upload images and annotations (The upload part can be done either via web or highlighter_client_python)
+1. Create New Object Classes (Under Resources => Object Classes)
+2. Create New Data Source (Under Resources => Data Sources)
+3. Create New Image Queue (Under Resources => Image Queues and add ImageFilter to the Data Source created)
+4. Create New Project (Under Researches => Project and select the created Object Classes)
 
+Following steps required to upload the model checkpoint and associated config (The upload cannot be done via web. Use model import script from highlighter_client_python):
+1. Create New Research Plan (Under Resources => Research Plans)
+2. Create New Experiment under the created research plan
+
+Take notes of all the relevant ids created as they are required to be passed to highlighter_client_python
 
 ## Highlighter Python Client
 
