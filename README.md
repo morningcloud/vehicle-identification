@@ -49,11 +49,55 @@ Following steps required for a new project to upload images and annotations (The
 Following steps required to upload the model checkpoint and associated config (The upload cannot be done via web. Use model import script from highlighter_client_python):
 1. Create New Research Plan (Under Resources => Research Plans)
 2. Create New Experiment under the created research plan
+3. Create New Model entry (This highlighter requires admin rights)
 
 Take notes of all the relevant ids created as they are required to be passed to highlighter_client_python
 
-## Highlighter Python Client
+## Highlighter Client Python
+Following are the scripts used from Highlighter Client Python. Please refer to the latest [repo](https://gitlab.com/silverpond/products/highlighter/highlighter_client_python) for installation instructions and latest updates.
+1. Dateset Import to Highlighter
+Eventhough the model is not trained using highlighter, it was handy to import the dataset to highlighter to be able to export them in another format, this was used while attempting to train the object detection model using mmpond
 
+```
+highlighter dataset import ../bus-identification/Data/AllImages/ --format=pascalvoc --data-source-id=1451 --user-id=457 --project-id=477
+```
+
+2. Model Import
+Through this script the model files and log files (if any) will be uploaded to S3 pucket and referenced in highlighter under the specified research plan and experiment (The ids that were created in [Highlighter Web](#highlighter-web))
+
+```
+highlighter model import-training-run 
+--repo-url=https://gitlab.com/silverpond/research/application/bus-identification.git 
+--repo-commit-hash=db1865d4b0312ada31d9cc89e99d9aff8ba16463
+--project-id=477 \
+--research-plan-id=37 \
+--experiment-id=92 \
+--model-id=30 \
+--run-name=TFSSD-run \
+--model-files=../bus-identification/ExperimentFiles/TFSSD/Model/busid_frozen_inference_graph.pb \
+--model-files=../bus-identification/ExperimentFiles/TFSSD/Model/bus_label_map.pbtxt \
+--log-files=../bus-identification/ExperimentFiles/TFSSD/events.out.tfevents.1588844993.ee40f3c056ac
+```
+
+```
+highlighter model import-training-run 
+--repo-url=https://gitlab.com/silverpond/research/application/bus-identification.git \
+--repo-commit-hash=49dcf86b133f2e39b74f0504699b860469b1d112 \
+--project-id=477 \
+--research-plan-id=37 \
+--experiment-id=153 \
+--model-id=30 \
+--run-name=mmdet-run \
+--model-files=../bus-identification/ExperimentFiles/mmdet/faster_rcnn_r50_fpn_1x_voc0712.py \
+--model-files=../bus-identification/ExperimentFiles/mmdet/busid_latest.pth \
+--log-files=../bus-identification/ExperimentFiles/mmdet/events.out.tfevents.1594725086.a166ce7d8c52.1125.0
+```
+
+3. Model Export
+This script is used to download the model files from highlighter. However this is not required as the export is done as part of the cortex application deployment
+```
+highlighter export_model_files --training-run-id=55
+```
 
 ## Highlighter Cortex Cluster
 
