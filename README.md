@@ -4,7 +4,7 @@
 The project's objective is to automate the process of collecting the replacement bus's identification details (i.e. Bus Run, Plate No) from image captures via mobile devices.
 
 # Process Flow
-Below flow diagram show the overall step involved in the identification process
+Below flow diagram show the overall steps involved in the identification process
 
 ![Alt text](doc/BusIDFlow.png?raw=true "Bus Identification Process Flow")
 
