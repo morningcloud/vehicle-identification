@@ -1,3 +1,6 @@
+# ALERT: This is outdated 
+The solution is incorporated as part to [highlighter-cortex-cluster](https://gitlab.com/silverpond/infrastructure/highlighter-cortex-cluster) project, please refer to [here](https://gitlab.com/silverpond/infrastructure/highlighter-cortex-cluster/-/tree/busid/busid) for the latest release
+
 # Bus Identification ML application
 
 An ML application for detecting identification details of bus images (Bus Run, Plate Number).
