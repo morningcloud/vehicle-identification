@@ -30,11 +30,11 @@ The output of the Google Vision API is processed with regex depending on the cla
 
 # Steps to replicate End to end process
 
-## Systems involved
+## Components involved
 1. Model Training (available in this repo)
-2. Highlighter Web (To create Training Run for checkpoint upload)
-3. Highlighter Python Client (CLI interface to import model to HL)
-4. Highlighter Cortex Cluster (For model deployment for interence)
+2. [Highlighter Web](https://highlighter.ai/dashboard) (To create Training Run for checkpoint upload)
+3. [Highlighter Python Client](https://gitlab.com/silverpond/products/highlighter/highlighter_client_python) (CLI interface to import model to HL)
+4. [Highlighter Cortex Cluster](https://gitlab.com/silverpond/infrastructure/highlighter-cortex-cluster/-/tree/busid) (For model deployment for interence)
 
 ## Model Training
 
