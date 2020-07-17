@@ -37,7 +37,9 @@ The output of the Google Vision API is processed with regex depending on the cla
 4. [Highlighter Cortex Cluster](https://gitlab.com/silverpond/infrastructure/highlighter-cortex-cluster/-/tree/busid) (For model deployment for interence)
 
 ## Model Training
-We used colab for the object detection model training
+We used colab environment for the object detection model training, the notebooks for each contains detailed documentation and explanation of prerequisits and steps required:
+- [TF bus identification.ipynb](https://gitlab.com/silverpond/research/application/bus-identification/-/blob/master/TF%20bus%20identification.ipynb)
+- [mmdetection bus identification.ipynb](https://gitlab.com/silverpond/research/application/bus-identification/-/blob/master/mmdetection%20bus%20identification.ipynb)
 
 ## Highlighter Web
 Following steps required for a new project to upload images and annotations (The upload part can be done either via web or highlighter_client_python)
