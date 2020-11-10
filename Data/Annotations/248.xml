@@ -1,0 +1,38 @@
+<annotation>
+	<folder>val_cars_bk</folder>
+	<filename>248.jpg</filename>
+	<path>/Volumes/GoogleDrive/My Drive/UniMelb/Semester1_2020/Internship/SilverPond/FinalSource/bus-identification/Data/val_cars_bk/248.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>800</width>
+		<height>600</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>PlateNo</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>419</xmin>
+			<ymin>428</ymin>
+			<xmax>585</xmax>
+			<ymax>491</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>BusRun</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>322</xmin>
+			<ymin>135</ymin>
+			<xmax>406</xmax>
+			<ymax>155</ymax>
+		</bndbox>
+	</object>
+</annotation>

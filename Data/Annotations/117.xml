@@ -1,0 +1,38 @@
+<annotation>
+	<folder>train_cars</folder>
+	<filename>117.jpg</filename>
+	<path>/Volumes/GoogleDrive/My Drive/UniMelb/Semester1_2020/Internship/SilverPond/FinalSource/Data/train_cars/117.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>800</width>
+		<height>600</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>BusRun</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>326</xmin>
+			<ymin>145</ymin>
+			<xmax>397</xmax>
+			<ymax>163</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>PlateNo</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>363</xmin>
+			<ymin>437</ymin>
+			<xmax>546</xmax>
+			<ymax>489</ymax>
+		</bndbox>
+	</object>
+</annotation>

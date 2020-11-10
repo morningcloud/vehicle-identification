@@ -31,9 +31,8 @@ from googleapiclient.discovery import build
 import base64
 import re
 
-sys.path.append(os.path.abspath("../../highlighter_client_python_latest"))
+#sys.path.append(os.path.abspath("../../highlighter_client_python_latest"))
 from highlighter_client import graphql as gql
-from sgqlc.operation import Operation
 
 # API Key 
 DOWNLOAD_DIR = os.path.abspath("model/")
@@ -63,6 +62,7 @@ class PythonPredictor:
         training_run_id=config['training_run_id'],
         output_directory=DOWNLOAD_DIR)
 
+    print("Extracting ", model_file)
     with tarfile.open(model_file) as buf:
         buf.extractall(path=DOWNLOAD_DIR)
 

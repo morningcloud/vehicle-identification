@@ -6,4 +6,5 @@ gast==0.2.2
 google-api-python-client
 Pillow
 sgqlc
-highlighter_client>=0.1.8
+#highlighter_client>=0.1.8
+highlighter_client-0.1.8.tar.gz

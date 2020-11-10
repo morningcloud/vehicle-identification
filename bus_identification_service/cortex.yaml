@@ -7,14 +7,18 @@
       aws_s3_presigned_url: https://demo.highlighter.ai/presign
       #model: s3://s3-ghawady-001/busid_model/busid_frozen_inference_graph.pb
       #labelmap: s3://s3-ghawady-001/busid_model/label_map.pbtxt
-      highlighter_apitoken: [TO-BE-ADDED]
-      gvision_apikey: [TO-BE-ADDED]
+      highlighter_apitoken: 15f151ecdb5738bd0956fc1b27734277323d88913e0ec8bb2b5e16e670176131
+      gvision_apikey: AIzaSyCKYvQehYvOSzbLLbPwi1-94FkSTgs7In0
+      #highlighter_apitoken: [TO-BE-ADDED]
+      #gvision_apikey: [TO-BE-ADDED]
       min_threshold: 0.5
       experiment_id: 92
       training_run_id: 55
     env:
-      PYPI_USERNAME: [TO-BE-ADDED]
-      PYPI_PASSWORD: [TO-BE-ADDED]
+      PYPI_USERNAME: cortex
+      PYPI_PASSWORD: HXNDmFTeMT9TsJDVOIDQFDVS
+      #PYPI_USERNAME: [TO-BE-ADDED]
+      #PYPI_PASSWORD: [TO-BE-ADDED]
 
   compute:
     cpu: 1
