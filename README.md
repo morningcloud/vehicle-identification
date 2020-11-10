@@ -1,7 +1,7 @@
-# Vehicle Identification Project
+# Vehicle Identification
 
 # Background 
-The project's objective is to automate the process of collecting the vehicle identification details (i.e. Bus Run, Plate No) from image captures via mobile devices.
+The objective is to automate the process of collecting the vehicle identification details (i.e. Bus Run, Plate No) from image captures taken via mobile devices.
 
 # Process Flow
 Below flow diagram show the overall steps involved in the identification process
