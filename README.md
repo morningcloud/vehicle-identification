@@ -1,32 +1,29 @@
-# Bus Identification Project
+# Vehicle Identification Project
 
 # Background 
-The project's objective is to automate the process of collecting the replacement bus's identification details (i.e. Bus Run, Plate No) from image captures via mobile devices.
+The project's objective is to automate the process of collecting the vehicle identification details (i.e. Bus Run, Plate No) from image captures via mobile devices.
 
 # Process Flow
 Below flow diagram show the overall steps involved in the identification process
 
 ![Alt text](doc/BusIDFlow.png?raw=true "Bus Identification Process Flow")
 
-Two models are utilised as part of the flow:
+### Two models are utilised as part of the flow:
 
-1. Object Detection
+#### 1. Object Detection
 
 We used custom images annotated in Pascal VOC format and experimented with two models:
 
-- TF Object Detection model: Available in [TF bus identification.ipynb](https://gitlab.com/silverpond/research/application/bus-identification/-/blob/master/TF%20bus%20identification.ipynb)
-- mmdetection v2.2.1: Available in [mmdetection bus identification](https://gitlab.com/silverpond/research/application/bus-identification/-/blob/master/mmdetection%20bus%20identification.ipynb)
+- TF Object Detection model: Available in [TF bus identification.ipynb](https://github.com/morningcloud/vehicle-identification/blob/master/TF%20bus%20identification.ipynb)
+- mmdetection v2.2.1: Available in [mmdetection bus identification.ipynb](https://github.com/morningcloud/vehicle-identification/blob/master/mmdetection%20bus%20identification.ipynb)
 
 Note: The TF Object Detection model is converted to TFlite in order to support being run on mobile
 
-2. Text Recognition
+#### 2. Text Recognition
 
 This is done via out of the box google vision 'TEXT_DETECTION' api.
 The output of the Google Vision API is processed with regex depending on the class type (i.e. Plate No or Bus ID). This adds as another layer to filter only valid sequences per expected object type.
 
-# Documents
-- [Handover Summary Doc](https://docs.google.com/document/d/1Hv95ZnxsNoY3RQTt3Ju-paVXvyPT9_uQAkjMPl5wBN0/edit)
-- [R&D Tax Concession LXRP](https://drive.google.com/file/d/1Wl9x5uYjHwK8F9rpUMGezQj6QpF9Qco-/view?usp=sharing)
 
 # Steps to replicate End to end process
 
@@ -34,12 +31,12 @@ The output of the Google Vision API is processed with regex depending on the cla
 1. Model Training (available in this repo)
 2. [Highlighter Web](https://highlighter.ai/dashboard) (To create Training Run for checkpoint upload)
 3. [Highlighter Client Python](https://gitlab.com/silverpond/products/highlighter/highlighter_client_python) (CLI interface to import model to HL)
-4. [Highlighter Cortex Cluster](https://gitlab.com/silverpond/infrastructure/highlighter-cortex-cluster/-/tree/busid) (For model deployment for interence)
+4. [Highlighter Cortex Cluster](https://gitlab.com/silverpond/infrastructure/highlighter-cortex-cluster/-/tree/busid) (For model deployment for inference)
 
 ## Model Training
 We used colab environment for the object detection model training, the notebooks for each contains detailed documentation and explanation of prerequisits and steps required:
-- [TF bus identification.ipynb](https://gitlab.com/silverpond/research/application/bus-identification/-/blob/master/TF%20bus%20identification.ipynb)
-- [mmdetection bus identification.ipynb](https://gitlab.com/silverpond/research/application/bus-identification/-/blob/master/mmdetection%20bus%20identification.ipynb)
+- [TF bus identification.ipynb](https://github.com/morningcloud/vehicle-identification/blob/master/TF%20bus%20identification.ipynb)
+- [mmdetection bus identification.ipynb](https://github.com/morningcloud/vehicle-identification/blob/master/mmdetection%20bus%20identification.ipynb)
 
 ## Highlighter Web
 Following steps required for a new project to upload images and annotations (The upload part can be done either via web or highlighter_client_python)
@@ -103,7 +100,7 @@ highlighter export_model_files --training-run-id=55
 
 ## Highlighter Cortex Cluster
 
-Cortex is used to deploy and serve the bus identification model implements the steps mentioned in the [process flow diagram]](#process-flow)
+Cortex is used to deploy and serve the vehicle identification model implements the steps mentioned in the [process flow diagram]](#process-flow)
 
 Following is a summary of steps to do the detailed installation steps are found [here](https://gitlab.com/silverpond/infrastructure/highlighter-cortex-cluster/-/blob/busid/busid/ReadMe.md)
 1. Get latest source from [here](https://gitlab.com/silverpond/infrastructure/highlighter-cortex-cluster/-/tree/busid)
